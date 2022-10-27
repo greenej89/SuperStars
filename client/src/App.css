@@ -1,9 +1,11 @@
 .App {
   text-align: center;
   height: 100vh;
-  background-image: url("https://pixabay.com/get/g1e1b6faec3e035098db00ec43aef048bd7a956c2ba48daa280764f697401b6965b3d9c03ff27314b5824f1eaf4ad9e342ce5385ddece5efcc91c2e2f92c22919c49033caa37bbbaf890fecf4a547a6f5_1920.jpg");
+  background-image: url('./static/main_background.jpg');
+  /* background-image: url("https://pixabay.com/get/g1e1b6faec3e035098db00ec43aef048bd7a956c2ba48daa280764f697401b6965b3d9c03ff27314b5824f1eaf4ad9e342ce5385ddece5efcc91c2e2f92c22919c49033caa37bbbaf890fecf4a547a6f5_1920.jpg"); */
   /* background-size: cover; */
   background-position: left top;
+  background-repeat: repeat-y;
   background-color: black;
 }
 

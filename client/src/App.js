@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Header/>
         <KidMenu/>
-        <div className='main'>
+        <div className='container main'>
           <Routes>
             <Route path='/dashboard' element={<KidForm/>}/>
             <Route path='/kids' element={<ControlCenter/>}/>
