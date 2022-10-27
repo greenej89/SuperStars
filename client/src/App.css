@@ -1,31 +1,41 @@
 .App {
   text-align: center;
+  height: 100vh;
+  background-image: url("https://pixabay.com/get/g1e1b6faec3e035098db00ec43aef048bd7a956c2ba48daa280764f697401b6965b3d9c03ff27314b5824f1eaf4ad9e342ce5385ddece5efcc91c2e2f92c22919c49033caa37bbbaf890fecf4a547a6f5_1920.jpg");
+  /* background-size: cover; */
+  background-position: left top;
+  background-color: black;
+}
+
+
+/* Header CSS */
+
+.App-header {
+  height: 100px;
+  background-color: #282c34;
+  /* border-bottom: 10px solid white; */
+  font-size: calc(10px + 2vmin);
+  color: palegoldenrod;
+}
+
+.App-header a {
+    color: white;
+    padding: 0px 16px 0px 16px;
+    text-decoration: none;
+}
+
+.App-header h1{
+  font-family: Papyrus, fantasy;
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 5s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -33,6 +43,96 @@
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
+
+/* Sidebar CSS */
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: black;
+  position: fixed;
+  height: 100%;
+  overflow:auto;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Kid Menu CSS */
+.kid-menu{
+  height: 80%;
+  overflow: auto;
+}
+.kid-menu a.active .kid-photo{
+  border: 5px solid palegoldenrod;
+}
+
+.kid-menu .kid-photo {
+  height: 70px;
+  width: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.main{
+  overflow: auto;
+  height: 80vh;
+}
+
+.create-kid-form{
+  position: relative;
+  top: 10vh;
+}
+
+.footer {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .kid-menu{
+    height: 65%;
+    overflow-x:auto;
+    overflow-y:hidden;
+  }
+  .sidebar a {display: inline-block}
+  div.content {margin-left: 0;}
+  .create-kid-form{
+    position: relative;
+    top: 5px;
+  }
+  .footer {
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+

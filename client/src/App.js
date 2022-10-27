@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Header from './components/Header';
+import KidMenu from './components/KidMenu';
+import Footer from './components/Footer';
+import KidForm from './components/KidForm';
+import ControlCenter from './components/ControlCenter';
+import GoalForm from './components/GoalForm';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header/>
+        <KidMenu/>
+        <div className='main'>
+          <Routes>
+            <Route path='/dashboard' element={<KidForm/>}/>
+            <Route path='/kids' element={<ControlCenter/>}/>
+            <Route path='goals/new' element={<GoalForm/>}/>
+          </Routes>
+        </div>
+        <div className='footer'>
+          <Footer/>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
