@@ -16,16 +16,18 @@ function App() {
       <BrowserRouter>
         <Header/>
         <KidMenu/>
-        <div className='container main'>
-          <Routes>
-            <Route path='/dashboard' element={<Dashboard/>}/>
-            <Route path='/kids' element={<ControlCenter accessKey={accessKey} setAccessKey={setAccessKey} validAccessKey={validAccessKey}/>}/>
-            <Route path='goals/new' element={<GoalForm/>}/>
-          </Routes>
-        </div>
-        <div className='footer'>
-          <Footer accessKey={accessKey} setAccessKey={setAccessKey} validAccessKey={validAccessKey}/>
-        </div>
+          <div className='main'>
+            <div className='container'>
+            <Routes>
+                <Route path='/dashboard' element={<Dashboard/>}/>
+                <Route path='/kids' element={<ControlCenter accessKey={accessKey} setAccessKey={setAccessKey} validAccessKey={validAccessKey}/>}/>
+                <Route path='goals/new' element={<GoalForm/>}/>
+            </Routes>
+            </div>
+          </div>
+          <div className='footer'>
+            <Footer accessKey={accessKey} setAccessKey={setAccessKey} validAccessKey={validAccessKey}/>
+          </div>
       </BrowserRouter>
     </div>
   );

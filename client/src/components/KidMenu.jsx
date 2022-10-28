@@ -3,7 +3,7 @@ import React from 'react'
 
 const KidMenu = () => {
   return (
-    <div className="sidebar text-white">
+    <div className="sidebar text-white d-flex flex-column align-items-center">
       <div className="kid-menu">
           <a href="#" className="">
               <img className="kid-photo img-fluid" src="https://images.pexels.com/photos/1288182/pexels-photo-1288182.jpeg" alt=""/>
