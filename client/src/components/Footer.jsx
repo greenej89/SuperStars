@@ -2,13 +2,11 @@ import { useEffect } from 'react'
 import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Footer = () => {
-
-  const validAccessKey = '123456789'
+const Footer = ({accessKey, setAccessKey, validAccessKey}) => {
 //const [accessKeyRequested, setAccessKeyRequested] = useState(false)
-  const [accessKey, setAccessKey] = useState('')
 
   const navigate = useNavigate()
+  const [inputAccessKey, setInputAccessKey] = useState('')
 
   const requestAccessKey = e => {
     alert(`Enter the access key:  ${validAccessKey}`)
@@ -17,18 +15,16 @@ const Footer = () => {
 
   const accessControlCenter = e => {
     e.preventDefault()
-    if (accessKey === validAccessKey) {
+    if (inputAccessKey === validAccessKey) {
       console.log("Valid access control ID....Navigating to Control Center")
-      setAccessKey('')
+      setAccessKey(inputAccessKey)
+      setInputAccessKey('')
       navigate("/kids")
-
     }
   }
 
   return (
     <div className="bg-dark text-white w-100 d-flex align-items-center justify-content-end">
-      <span>
-
         <form onSubmit={accessControlCenter} className="d-flex align-items-center justify-content-between me-2">
                 <label htmlFor="" className="col-form-label">
                   <button className="btn rounded-circle">
@@ -41,13 +37,12 @@ const Footer = () => {
                 </label>
                 <div className="col-sm-5">
                     <input type="text" className="form-control" id="inputEmail3" 
-                        onChange={e => setAccessKey(e.target.value)}
-                        value={accessKey}
+                        onChange={e => setInputAccessKey(e.target.value)}
+                        value={inputAccessKey}
                     />
                 </div>
             <button type="submit" className="btn btn-info">Go</button>
         </form>
-      </span>
     </div>
   )
 }

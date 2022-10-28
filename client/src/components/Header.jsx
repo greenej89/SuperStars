@@ -12,7 +12,6 @@ const Header = () => {
             <h1 className="align-self-end">Super Stars</h1>
         </div>
         <div className="menu">
-            <a href="#news">News</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
         </div>
