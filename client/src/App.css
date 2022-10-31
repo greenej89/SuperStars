@@ -68,8 +68,10 @@
   height: 80%;
   overflow: auto;
 }
-.kid-menu a.active .kid-photo{
+.kid-menu .active .kid-photo{
   border: 5px solid palegoldenrod;
+  height: 90px;
+  width: 90px;
 }
 
 .kid-menu .kid-photo {
@@ -92,6 +94,15 @@
 .create-kid-form{
   position: relative;
   top: 10vh;
+}
+
+.goal-details {
+  margin-left: 150px;
+  padding: 30px;
+}
+.star-display {
+  width: 500px;
+  background-color: #2b6c9a;
 }
 
 .footer {
@@ -125,6 +136,14 @@
   .create-kid-form{
     position: relative;
     top: 5px;
+  }
+  .goal-details {
+    margin-left: 0px;
+    background-color: #2b6c9a;
+  }
+  .star-display {
+    width: 250px;
+    background-color: #2b6c9a;
   }
   .footer {
     position: relative;

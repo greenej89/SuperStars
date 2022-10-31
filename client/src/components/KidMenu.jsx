@@ -1,34 +1,33 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 const KidMenu = () => {
+
+  let activeClassName = "active";
   return (
     <div className="sidebar text-white d-flex flex-column align-items-center">
       <div className="kid-menu">
-          <a href="#" className="">
+          <NavLink to='/kids/1' className={({ isActive }) => isActive ? activeClassName : undefined} >
               <img className="kid-photo img-fluid" src="https://images.pexels.com/photos/1288182/pexels-photo-1288182.jpeg" alt=""/>
               <p>Caleb</p>
-          </a>
-          <a href="#" className="active">
+          </NavLink>
+          <NavLink to='/kids/2' className={({ isActive }) => isActive ? activeClassName : undefined} >
               <img className="kid-photo img-fluid" src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg" alt=""/>
               <p>Noah</p>
-          </a>
-          <a href="#" className="">
+          </NavLink>
+          <NavLink to='/kids/3' className={({ isActive }) => isActive ? activeClassName : undefined} >
               <img className="kid-photo img-fluid" src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg" alt=""/>
-              <p>Kid Name</p>
-          </a>
-          <a href="#" className="">
+              <p>Third</p>
+          </NavLink>
+          <NavLink to='/kids/4' className={({ isActive }) => isActive ? activeClassName : undefined} >
               <img className="kid-photo img-fluid" src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg" alt=""/>
-              <p>Kid Name</p>
-          </a>
-          <a href="#" className="">
+              <p>Fourth</p>
+          </NavLink>
+          <NavLink to='/kids/5' className={({ isActive }) => isActive ? activeClassName : undefined} >
               <img className="kid-photo img-fluid" src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg" alt=""/>
-              <p>Kid Name</p>
-          </a>
-          <a href="#" className="">
-              <img className="kid-photo img-fluid" src="https://images.pexels.com/photos/35537/child-children-girl-happy.jpg" alt=""/>
-              <p>Kid Name</p>
-          </a>
+              <p>Fifth</p>
+          </NavLink>
       </div>
     </div>
   )
