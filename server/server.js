@@ -10,5 +10,6 @@ app.use(cors({
 }))
 
 require('./config/mongoose.config')
+require('./routes/kid.routes')(app)
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
