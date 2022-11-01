@@ -1,7 +1,6 @@
 import React from 'react'
 import AddGoalButton from '../components/AddGoalButton'
 import KidForm from '../components/KidForm'
-import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
 
@@ -14,8 +13,10 @@ const Dashboard = () => {
       <div className='mb-1 align-items-center justify-content-start' >
         <AddGoalButton/>
       </div>
-        <h2 className="text-white">Add Kid</h2>
+      <div className="col-sm-5 border rounded bg-warning p-3">
+        <h2>Add Kid</h2>
         <KidForm kidFormHandler={createKid}/>
+      </div>
     </div>
   )
 }

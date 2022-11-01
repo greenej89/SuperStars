@@ -19,9 +19,11 @@ const GoalDetails = () => {
   const awardStar = e => {
     e.preventDefault()
     console.log('addStar was clicked')
-    const updatedGoal = {...goal}
-    updatedGoal['earnedStars'] = goal.earnedStars+1
-    setGoal(updatedGoal)
+    if(goal.earnedStars < goal.totalStars){
+      const updatedGoal = {...goal}
+      updatedGoal['earnedStars'] = goal.earnedStars+1
+      setGoal(updatedGoal)
+    }
   }
 
   return (

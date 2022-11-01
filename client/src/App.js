@@ -24,10 +24,10 @@ function App() {
         <Header/>
         <KidMenu/>
           <div className='main'>
-            <div className='container'>
+            <div className='container mt-5'>
             <Routes>
                 <Route path='/dashboard' element={<Dashboard/>}/>
-                <Route path='/kids' element={<ControlCenter accessCode={accessCode} setAccessCode={setAccessCode} validAccessCode={validAccessCode}/>}/>
+                <Route path='/kids' element={<ControlCenter accessCode={accessCode} setAccessCode={setAccessCode} validAccessCode={validAccessCode} kidList={kidList} setKidList={setKidList}/>}/>
                 <Route path='/goals/new' element={<AddGoal kidList={kidList} setKidList={setKidList}/>}/>
                 <Route path='/goals/:id/edit' element={<EditGoal kidList={kidList} setKidList={setKidList}/>}/>
                 <Route path='/kids/:id' element={<KidDetails/>}/>

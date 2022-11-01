@@ -1,9 +1,10 @@
 import React from 'react'
 import KidForm from '../components/KidForm'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-const ControlCenter = ({accessCode,setAccessCode,validAccessCode}) => {
+const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKidList}) => {
+  const [kid, setKid] = useState({})
   const navigate =useNavigate()
   useEffect(() => {
     if(accessCode !==validAccessCode){
@@ -21,8 +22,17 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode}) => {
     return (
       <div className="edit-kid-form d-flex flex-column align-items-center">
         <h1 className="text-white">Control Center</h1>
-          <h2 className="text-white">Edit Kid</h2>
-          <KidForm kidFormHandler={editKid}/>
+          <div className="col-sm-5 border rounded bg-warning p-3">
+            <h2>Edit Kid</h2>
+            <form>
+              <select className="form-control mb-3" value={kid} onChange={(e)=>setKid(e.target.value)}>
+                  <option>Select A Kid</option>
+                  {/* <option value="value">What Will Appear on Screen</option> */}
+                  {kidList.map( kid => <option value={kid}>{kid.name}</option>)}
+              </select>
+            </form>
+            <KidForm kidFormHandler={editKid}/>
+          </div>
           <div className="goal-list mt-3 w-50">
             <table class="table bg-white">
               <tbody>

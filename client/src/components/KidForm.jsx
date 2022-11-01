@@ -5,7 +5,7 @@ const KidForm = ({kidFormHandler}) => {
     const [imageURL, setImageURL] = useState('')
   return (
     <>
-      <form onSubmit={kidFormHandler} className="col-sm-5 border rounded bg-warning p-3">
+      <form onSubmit={kidFormHandler}>
           <div className='mb-1 d-flex align-items-center justify-content-center' >
             <label className='col-sm-4 col-form-label-lg text-start' htmlFor='name'> Name:</label>
             <input className='form-control' type='text' id='name' onChange = {e => setName(e.target.value)} value={name}/>
