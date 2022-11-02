@@ -1,26 +1,25 @@
 import { useState } from 'react'
 
-const GoalForm = ({kidList, setKidList}) => {
-
-  const [kid, setKid] = useState({})
+const GoalForm = ({kidList, setKidList, goalFormHandler, errors }) => {
+  const [kidId, setKidId] = useState('')
   const [summary, setSummary] = useState('')
   const [pledge, setPledge] = useState('')
   const [reward, setReward] = useState('')
   const [rewardImageURL, setRewardImageURL] = useState('')
   const [totalStars, setTotalStars] = useState(0)
 
-  const goalFormHandler = e => {
+  const onSubmitHandler = e => {
     e.preventDefault()
+    goalFormHandler()
   }
   return (
     <>
-      <form onSubmit={goalFormHandler} className="col-sm-5 border rounded bg-warning p-3">
+      <form onSubmit={onSubmitHandler} className="col-sm-5 border rounded bg-warning p-3">
         <div className='mb-1 d-flex align-items-center justify-content-center' >
           <label className='col-sm-4 col-form-label-lg text-start' htmlFor='kid' >Kid</label>
-          <select className="form-control" value={kid} onChange={(e)=>setKid(e.target.value)}>
-              <option>Select A Kid</option>
-              {/* <option value="value">What Will Appear on Screen</option> */}
-              {kidList.map( kid => <option value={kid}>{kid.name}</option>)}
+          <select className="form-control" value={kidId} onChange={(e)=>setKidId(e.target.value)}>
+              <option value={null} >Select A Kid</option>
+              {kidList.map( kid => <option value={kid._id}> {kid.name} </option>)}
           </select>
         </div>
         <div className='mb-1 d-flex align-items-center justify-content-center' >

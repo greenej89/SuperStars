@@ -1,5 +1,5 @@
 import React from 'react'
-import GoalForm from './GoalForm'
+import GoalForm from '../components/GoalForm'
 
 const AddGoal = ({kidList, setKidList}) => {
   return (

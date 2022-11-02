@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 
 const GoalSchema = new mongoose.Schema(
     {
-        // kid_id: {
-        //     type: String,
-        //     required: [true, "Kid ID is required."]
-        // },
+        kidId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Kid',
+            required: [true, "Kid ID is required."]
+        },
         summary: {
             type: String,
             required: [true, "Summary is required."],
@@ -48,9 +49,17 @@ const KidSchema = new mongoose.Schema(
         imageURL: {
             type: String
         },
-        goals: [GoalSchema]
+        goals: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Goal'
+            // validate: [arrayLimit, "Maximum number of goals is 5"]
+        }]
     },
     {timestamps: true})
+
+    // function arrayLimit(value) {
+    //     return value.length <= 5
+    // }
 
 const Kid = mongoose.model('Kid', KidSchema)
 const Goal = mongoose.model('Goal', GoalSchema)

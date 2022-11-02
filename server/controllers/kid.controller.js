@@ -1,27 +1,22 @@
-const {Kid, Goal} = require('../models/kid.model')
+const {Kid} = require('../models/app.model')
 
 module.exports.findAllKids = (req, res) => {
     Kid.find()
-    .then((allKids) => {
-        console.log(allKids)
-        res.json(allKids)
-    }) 
-    .catch((err) => {
-        console.log("findAllKids has failed!")
-        res.json({ message: "Something went wrong with findAllKids", error: err })
-})}
+    .then((allKids) => res.json(allKids))
+    .catch((err) => res.status(400).json(err))
+}
 
 module.exports.findKidById = (req, res) => {
     Kid.findOne({ _id: req.params.id })
-        .then(oneKid =>  res.json(oneKid) ) 
-        .catch((err) => res.json({ message: 'Something wrong with findKidById', error: err })
-)}
+        .then(oneKid => res.json(oneKid) ) 
+        .catch((err) => res.status(400).json(err))
+}
 
 module.exports.createKid = (req, res) => {
     Kid.create(req.body)
         .then(newKid => res.json( newKid ))
-        .catch((err) => res.json({ message: 'Something wrong with createKid', error: err })
-)}
+        .catch((err) => res.status(400).json(err))
+}
 
 module.exports.updateKid = (req, res) => {
     Kid.findOneAndUpdate( 
@@ -30,11 +25,11 @@ module.exports.updateKid = (req, res) => {
         { new: true, runValidators: true }
     )
         .then(updatedKid => res.json( updatedKid ))
-        .catch((err) => res.json({ message: 'Something wrong with updateKid', error: err })
-)}
+        .catch((err) => res.status(400).json(err))
+}
 
 module.exports.deleteKid = (req, res) => {
     Kid.deleteOne({ _id: req.params.id })
         .then(result => res.json( result )) 
-        .catch((err) => res.json({ message: 'Something wrong with deleteKid', error: err })
-)}
+        .catch((err) => res.status(400).json(err))
+}

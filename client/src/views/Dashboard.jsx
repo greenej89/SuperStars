@@ -1,11 +1,27 @@
-import React from 'react'
+import { useState } from 'react'
 import AddGoalButton from '../components/AddGoalButton'
 import KidForm from '../components/KidForm'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-const Dashboard = () => {
+const Dashboard = ({kidList, setKidList}) => {
 
-  const createKid = e => {
-    e.preventDefault()
+  const navigate = useNavigate()
+
+  const [errors, setErrors] = useState({})
+
+  const createKid = kidParam => {
+    axios.post('http://localhost:8000/api/kids', kidParam)
+      .then( res => {
+        console.log('Created new kid', res.data)
+        setKidList([...kidList, res.data])
+        navigate(`/kids/${res.data._id}`)
+      })
+      .catch( err => {
+        console.log(err.response.data.errors)
+        setErrors(err.response.data.errors)
+        console.log("***********", errors)
+      })
   }
   
   return (
@@ -15,7 +31,12 @@ const Dashboard = () => {
       </div>
       <div className="col-sm-5 border rounded bg-warning p-3">
         <h2>Add Kid</h2>
-        <KidForm kidFormHandler={createKid}/>
+        <KidForm 
+          initialName = ''
+          initialImageURL = ''
+          kidFormHandler={createKid}
+          errors = {errors}
+        />
       </div>
     </div>
   )
