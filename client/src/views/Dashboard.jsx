@@ -18,9 +18,7 @@ const Dashboard = ({kidList, setKidList}) => {
         navigate(`/kids/${res.data._id}`)
       })
       .catch( err => {
-        console.log(err.response.data.errors)
         setErrors(err.response.data.errors)
-        console.log("***********", errors)
       })
   }
   
@@ -33,7 +31,7 @@ const Dashboard = ({kidList, setKidList}) => {
         <h2>Add Kid</h2>
         <KidForm 
           initialName = ''
-          initialImageURL = ''
+          initialImageURL = 'https://cdn-icons-png.flaticon.com/512/206/206880.png'
           kidFormHandler={createKid}
           errors = {errors}
         />
