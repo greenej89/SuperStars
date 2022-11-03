@@ -1,16 +1,28 @@
 import { useState } from 'react'
 
-const GoalForm = ({kidList, setKidList, goalFormHandler, errors }) => {
-  const [kidId, setKidId] = useState('')
-  const [summary, setSummary] = useState('')
-  const [pledge, setPledge] = useState('')
-  const [reward, setReward] = useState('')
-  const [rewardImageURL, setRewardImageURL] = useState('')
-  const [totalStars, setTotalStars] = useState(0)
+const GoalForm = (
+  {kidList, setKidList, initialKidId, initialSummary, initialPledge,
+    initialReward, initialRewardURL, initialTotalStars, initialAwardedStars,
+    goalFormHandler, errors}) => {
+  const [kidId, setKidId] = useState(initialKidId)
+  const [summary, setSummary] = useState(initialSummary)
+  const [pledge, setPledge] = useState(initialPledge)
+  const [reward, setReward] = useState(initialReward)
+  const [rewardURL, setRewardURL] = useState(initialRewardURL)
+  const [totalStars, setTotalStars] = useState(initialTotalStars)
+  const [awardedStars, setAwardedStars] = useState(initialAwardedStars)
 
   const onSubmitHandler = e => {
     e.preventDefault()
-    goalFormHandler()
+    goalFormHandler({
+      kidId,
+      summary,
+      pledge,
+      reward,
+      rewardURL,
+      totalStars,
+      awardedStars
+    })
   }
   return (
     <>
@@ -19,7 +31,7 @@ const GoalForm = ({kidList, setKidList, goalFormHandler, errors }) => {
           <label className='col-sm-4 col-form-label-lg text-start' htmlFor='kid' >Kid</label>
           <select className="form-control" value={kidId} onChange={(e)=>setKidId(e.target.value)}>
               <option value={null} >Select A Kid</option>
-              {kidList.map( kid => <option value={kid._id}> {kid.name} </option>)}
+              {kidList.map( kid => <option value={kid._id} key={kid._id}> {kid.name} </option>)}
           </select>
         </div>
         <div className='mb-1 d-flex align-items-center justify-content-center' >
@@ -35,8 +47,8 @@ const GoalForm = ({kidList, setKidList, goalFormHandler, errors }) => {
           <input className='form-control' type='text' id='reward' onChange = {e => setReward(e.target.value)} value={reward}/>
         </div>
         <div className='mb-1 d-flex align-items-center justify-content-center'>
-          <label className='col-sm-4 col-form-label-lg text-start' htmlFor='rewardImageURL'>Reward Image URL: (optional)</label>
-          <input className='form-control' type='text' id='rewardImageURL' onChange = {e => setRewardImageURL(e.target.value)} value={rewardImageURL}/>
+          <label className='col-sm-4 col-form-label-lg text-start' htmlFor='rewardURL'>Reward Image URL: (optional)</label>
+          <input className='form-control' type='text' id='rewardURL' onChange = {e => setRewardURL(e.target.value)} value={rewardURL}/>
         </div>
         <div className='mb-1 d-flex align-items-center justify-content-center'>
           <label className='col-sm-4 col-form-label-lg text-start' htmlFor='totalStars'>Total Stars:</label>

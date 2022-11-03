@@ -34,12 +34,6 @@ const KidDetails = () => {
                     </tr>
                   ))
                 }
-              {/* <tr>
-                <td>Be Nice to Brother</td>
-                <td>7</td>
-                <td>/</td>
-                <td>10</td>
-              </tr> */}
             </tbody>
           </table>
         }

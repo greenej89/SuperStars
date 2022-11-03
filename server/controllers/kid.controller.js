@@ -8,6 +8,7 @@ module.exports.findAllKids = (req, res) => {
 
 module.exports.findKidById = (req, res) => {
     Kid.findOne({ _id: req.params.id })
+        .populate('goals')
         .then(oneKid => res.json(oneKid) ) 
         .catch((err) => res.status(400).json(err))
 }
