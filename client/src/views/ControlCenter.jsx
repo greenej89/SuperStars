@@ -20,26 +20,54 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
     }}, [])
 
   useEffect(() => {
+    setLoaded(false)
+    console.log('In use effect')
     if(kidId){
+      console.log('in if(kidId)')
       axios.get('http://localhost:8000/api/kids/' + kidId)
       .then( res => {
         setKid(res.data)
         setLoaded(true) //Indicate that person is loaded
       })
       .catch( err => console.log(err) )
-  }}, [kidId,kid])
+    }}, [kidId])
 
   const editKid = kidParam => {
     axios.put('http://localhost:8000/api/kids/' + kid._id, kidParam)
       .then( res => {
         console.log('Update was succesful', res.data)
-        setKid(res.data)
         setErrors({})
+        setKidList(initialKidList => initialKidList.map((kidInList)=>{
+          if(kid._id === kidInList._id){
+            kidInList = res.data
+          } 
+          return kidInList
+        }))
+        setKid(res.data)
         navigate('/kids/' + res.data._id)
       })
       .catch( err => {
         setErrors(err.response.data.errors)
       })
+  }
+
+  const deleteGoal = (goalId) => {
+    axios.delete('http://localhost:8000/api/goals/' + goalId)
+      .then( res => {
+        console.log('goal deleted', res.data)
+        navigate('/kids/' + kid._id)
+      })
+      .catch( err => console.log(err))
+  }
+
+  //Delete
+  const deleteKid = e => {
+    e.preventDefault()
+    axios.delete('http://localhost:8000/api/kids/' + kid._id)
+      .then( res => {
+        setKidList( kidList.filter( kidInList => kidInList._id !== kid._id ))
+      })
+      .catch( err => console.log(err))
   }
 
   return (
@@ -53,11 +81,14 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
       </div>
       <div className="col-sm-5 border rounded bg-warning p-3">
         { kidId &&<h3>Edit {kid.name}'s Information</h3> }
-        <KidForm 
-          kid = {kid}
-          kidFormHandler={editKid}
-          errors = {errors}
-        />
+        { loaded &&
+          <KidForm 
+            initialName = {kid.name}
+            initialImageURL ={kid.imageURL}
+            kidFormHandler={editKid}
+            errors = {errors}
+          />
+        }
         <hr></hr>
         { kidId && <h3 className='mt-3'>Edit {kid.name}'s Goals</h3> }
         <div className="goal-list mt-3">
@@ -86,10 +117,10 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
                         <td>/</td>
                         <td>{goal.totalStars}</td>
                         <td>
-                          <button className='btn' > {/*onClick={ e => {deletePet(pet._id)}}> */}
+                          <button className='btn' onClick={ e => {deleteGoal(goal._id)}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
                               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                             </svg>
                           </button>
                         </td>
@@ -101,10 +132,10 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
           }
         </div>
       </div>
-      <button className='btn btn-danger mt-5'> {/*onClick={ e => {deletePet(pet._id)}}>*/}
+      <button className='btn btn-danger mt-5' onClick={deleteKid}>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
           <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+          <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
         </svg>
         <span className='ms-2'>Delete {kid.name}</span>
       </button>

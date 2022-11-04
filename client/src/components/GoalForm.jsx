@@ -30,7 +30,7 @@ const GoalForm = (
         <div className='mb-1 d-flex align-items-center justify-content-center' >
           <label className='col-sm-4 col-form-label-lg text-start' htmlFor='kid' >Kid</label>
           <select className="form-control" value={kidId} onChange={(e)=>setKidId(e.target.value)}>
-              <option value={null} >Select A Kid</option>
+              <option value={kidId} >Select A Kid</option>
               {kidList.map( kid => <option value={kid._id} key={kid._id}> {kid.name} </option>)}
           </select>
         </div>
@@ -52,7 +52,7 @@ const GoalForm = (
         </div>
         <div className='mb-1 d-flex align-items-center justify-content-center'>
           <label className='col-sm-4 col-form-label-lg text-start' htmlFor='totalStars'>Total Stars:</label>
-          <input className='form-control' type='number' id='totalStars' onChange = {e => setTotalStars(e.target.value)} value={totalStars}/>
+          <input className='form-control' type='number' id='totalStars' min='0' onChange = {e => setTotalStars(e.target.value)} value={totalStars}/>
           <button type="submit" className="btn btn-success btn-lg">Submit</button>
         </div>
         </form>
