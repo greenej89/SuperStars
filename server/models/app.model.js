@@ -47,7 +47,8 @@ const KidSchema = new mongoose.Schema(
             minLength: [2, "Name must be at least 2 characters."]
         },
         imageURL: {
-            type: String
+            type: String,
+            default: 'https://cdn-icons-png.flaticon.com/512/206/206880.png'
         },
         goals: [{
             type: mongoose.Schema.Types.ObjectId,

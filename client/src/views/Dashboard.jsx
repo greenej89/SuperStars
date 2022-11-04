@@ -31,7 +31,7 @@ const Dashboard = ({kidList, setKidList}) => {
         <h2>Add Kid</h2>
         <KidForm 
           initialName = ''
-          initialImageURL = 'https://cdn-icons-png.flaticon.com/512/206/206880.png'
+          initialImageURL = {undefined} //'https://cdn-icons-png.flaticon.com/512/206/206880.png'
           kidFormHandler={createKid}
           errors = {errors}
         />
