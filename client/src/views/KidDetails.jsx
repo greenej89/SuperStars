@@ -1,13 +1,12 @@
 import AddGoalButton from "../components/AddGoalButton";
 import {useState, useEffect} from "react";
-import {useParams, useNavigate} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import axios from 'axios'
 
 const KidDetails = () => {
 
   const [kid, setKid] = useState({})
   const{id} = useParams()
-  const navigate = useNavigate()
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/kids/' + id)
@@ -27,7 +26,11 @@ const KidDetails = () => {
                 {
                   kid.goals.map((goal)=>(
                     <tr key={goal._id}>
-                      <td>{goal.summary}</td>
+                      <td>                          
+                        <Link to={`/goals/${goal._id}`}>
+                          {goal.summary}
+                        </Link>
+                      </td>
                       <td>{goal.awardedStars}</td>
                       <td>/</td>
                       <td>{goal.totalStars}</td>
