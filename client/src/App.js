@@ -50,7 +50,7 @@ function App() {
                   kidList={kidList} 
                   setKidList={setKidList}
                 />}/>
-                <Route path='/goals/:id/edit' element={<EditGoal 
+                <Route path='/kids/:kidId/goals/:id/edit' element={<EditGoal 
                   kidList={kidList} 
                   setKidList={setKidList}
                 />}/>

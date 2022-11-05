@@ -37,7 +37,7 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
         console.log('Updated goal', res.data)
         setGoal(res.data)
         setErrors({})
-        navigate('/goals/' + id)
+        navigate(`/kids/${goal.kidId}/goals/` + id)
       })
       .catch( err => {
         setErrors(err.response.data.errors)
@@ -46,7 +46,6 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
 
   return (
     <>
-    <p>{goal.awardedStars}</p>
         <h1 className="text-white">Edit Goal</h1>
         <div className="edit-goal-form d-flex flex-column align-items-center">
           {loaded &&  
