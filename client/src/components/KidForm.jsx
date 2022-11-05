@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const KidForm = ({initialName, initialImageURL, kidFormHandler, errors}) => {
+const KidForm = ({initialName, initialImageURL, kidFormHandler, errors, accessCode, validAccessCode}) => {
     const [name, setName] = useState(initialName)
     const [imageURL, setImageURL] = useState(initialImageURL)
 
@@ -22,10 +22,12 @@ const KidForm = ({initialName, initialImageURL, kidFormHandler, errors}) => {
             <label className='col-5 col-form-label-lg text-start' htmlFor='imageURL'>Photo Link (optional):</label>
             <input className='form-control' type='text' id='imageURL' onChange = {e => setImageURL(e.target.value)} value={imageURL}/>
           </div>
-
-          <div className='mb-1 align-items-center justify-content-start' >
-            <button type="submit" className="btn btn-success btn-lg">Submit</button>
-          </div>
+          {
+            accessCode === validAccessCode &&
+            <div className='mb-1 align-items-center justify-content-start' >
+              <button type="submit" className="btn btn-success btn-lg">Submit</button>
+            </div>
+          }
         </form>
       </>
   )

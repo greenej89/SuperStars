@@ -10,7 +10,9 @@ const GoalForm = (
     initialRewardURL, 
     goalFormHandler, 
     formType, 
-    errors
+    errors,
+    accessCode,
+    validAccessCode
   }) => {
 
   const [kidId] = useState(initialKidId)
@@ -64,7 +66,10 @@ const GoalForm = (
         <label className='col-4 col-form-label-lg text-start' htmlFor='rewardURL'>Reward Image URL: (optional)</label>
         <input className='form-control' type='text' id='rewardURL' onChange = {e => setRewardURL(e.target.value)} value={rewardURL}/>
       </div>
-      <button type="submit" className="btn btn-success btn-lg">Submit</button>
+      {
+        accessCode === validAccessCode &&
+        <button type="submit" className="btn btn-success btn-lg">Submit</button>
+      }
     </form>
   )
 }

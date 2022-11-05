@@ -3,7 +3,7 @@ import KidForm from '../components/KidForm'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const Dashboard = ({kidList, setKidList}) => {
+const Dashboard = ({kidList, setKidList, accessCode, validAccessCode}) => {
 
   const navigate = useNavigate()
   const [errors, setErrors] = useState({})
@@ -29,6 +29,8 @@ const Dashboard = ({kidList, setKidList}) => {
           initialImageURL = {undefined} //'https://cdn-icons-png.flaticon.com/512/206/206880.png'
           kidFormHandler={createKid}
           errors = {errors}
+          accessCode ={accessCode}
+          validAccessCode = {validAccessCode}
         />
       </div>
     </div>

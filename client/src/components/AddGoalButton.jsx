@@ -1,7 +1,7 @@
 import React from 'react'
 import { redirect, useNavigate } from 'react-router-dom'
 
-const AddGoalButton = ({kidId}) => {
+const AddGoalButton = ({kidId, accessCode, validAccessCode}) => {
   const navigate = useNavigate()
   const routeChange = e => {
     navigate(`/kids/${kidId}/goals/new`)

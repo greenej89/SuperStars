@@ -36,6 +36,8 @@ function App() {
             <div className='container mt-5'>
             <Routes>
                 <Route path='/dashboard' element={<Dashboard 
+                  accessCode={accessCode}
+                  validAccessCode={validAccessCode}
                   kidList={kidList} 
                   setKidList={setKidList}
                   />}/>
@@ -49,13 +51,23 @@ function App() {
                 <Route path='/kids/:kidId/goals/new' element={<AddGoal 
                   kidList={kidList} 
                   setKidList={setKidList}
+                  accessCode={accessCode}
+                  validAccessCode={validAccessCode}
                 />}/>
                 <Route path='/kids/:kidId/goals/:id/edit' element={<EditGoal 
                   kidList={kidList} 
                   setKidList={setKidList}
+                  accessCode={accessCode}
+                  validAccessCode={validAccessCode}
                 />}/>
-                <Route path='/kids/:id' element={<KidDetails/>}/>
-                <Route path='/kids/:kidId/goals/:goalId' element={<GoalDetails/>}/>
+                <Route path='/kids/:id' element={<KidDetails
+                  accessCode={accessCode}
+                  validAccessCode={validAccessCode}
+                />}/>
+                <Route path='/kids/:kidId/goals/:goalId' element={<GoalDetails
+                  accessCode={accessCode}
+                  validAccessCode={validAccessCode}
+                />}/>
             </Routes>
             </div>
           </div>

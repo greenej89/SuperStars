@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import GoalForm from '../components/GoalForm'
 
-const AddGoal = ({kidList, setKidList}) => {
+const AddGoal = ({kidList, setKidList, accessCode, validAccessCode}) => {
 
   const {kidId} = useParams()
 
@@ -44,6 +44,8 @@ const AddGoal = ({kidList, setKidList}) => {
             goalFormHandler = {createGoal}
             formType = 'create'
             errors = {errors}
+            accessCode={accessCode}
+            validAccessCode={validAccessCode}
           />
         </>
       </div>

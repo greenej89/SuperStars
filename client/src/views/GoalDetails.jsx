@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
 
-const GoalDetails = () => {
+const GoalDetails = ({accessCode, validAccessCode}) => {
   const [goal, setGoal] = useState({})
   const{goalId} = useParams()
 
@@ -63,13 +63,10 @@ const GoalDetails = () => {
                     </svg>
             ))}
           </div>
-          { goal.awardedStars < goal.totalStars &&
+          { (goal.awardedStars < goal.totalStars && accessCode === validAccessCode) &&
             <button onClick={awardStar} className='btn btn-success mt-3'> Award Star </button>
           }
           <div className='mt-5'>
-            {/* { (goal.reward || goal.rewardURL) &&
-              <h2 className="text-white">Reward</h2>
-            } */}
             {goal.rewardURL &&
               <img src={goal.rewardURL} alt='reward image' className='w-50'></img>
             }

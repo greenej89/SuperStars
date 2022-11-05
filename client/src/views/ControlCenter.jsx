@@ -79,7 +79,7 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
           {kidList.map( kid => <option key={kid._id} value={kid._id}> {kid.name} </option>)}
         </select>
       </div>
-      { loaded &&
+      { (loaded && accessCode === validAccessCode) &&
         <div className="border rounded bg-warning p-3">
               <h3>Edit {kid.name}'s Information</h3> 
               <KidForm 

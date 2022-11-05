@@ -3,7 +3,7 @@ import GoalForm from '../components/GoalForm'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-const EditGoal = ({kidList, setKidList, kidId}) => {
+const EditGoal = ({kidList, setKidList, kidId, accessCode, validAccessCode}) => {
 
   //Destructure the pet id from the path variable
   const {id} = useParams()
@@ -63,6 +63,8 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
                 goalFormHandler = {updateGoal}
                 formType = 'edit'
                 errors = {errors}
+                accessCode={accessCode}
+                validAccessCode={validAccessCode}
               />
             <form onSubmit={e => updateGoal(goal)}>
             {/* <div className='mb-1 d-flex align-items-center justify-content-center'>

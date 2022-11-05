@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import {useParams, Link} from 'react-router-dom'
 import axios from 'axios'
 
-const KidDetails = () => {
+const KidDetails = ({accessCode, validAccessCode}) => {
 
   const [kid, setKid] = useState({})
   const{id} = useParams()
@@ -41,7 +41,10 @@ const KidDetails = () => {
           </table>
         }
       </div>
-      <AddGoalButton kidId={kid._id}/>
+      {
+        accessCode === validAccessCode &&
+        <AddGoalButton kidId={kid._id}/>
+      }
     </div>
   );
 };
