@@ -63,7 +63,9 @@ const GoalDetails = () => {
                     </svg>
             ))}
           </div>
+          { goal.awardedStars < goal.totalStars &&
             <button onClick={awardStar} className='btn btn-success mt-3'> Award Star </button>
+          }
           <div className='mt-5'>
             {/* { (goal.reward || goal.rewardURL) &&
               <h2 className="text-white">Reward</h2>
