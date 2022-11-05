@@ -37,7 +37,7 @@ function App() {
             <Routes>
                 <Route path='/dashboard' element={<Dashboard kidList={kidList} setKidList={setKidList}/>}/>
                 <Route path='/kids' element={<ControlCenter accessCode={accessCode} setAccessCode={setAccessCode} validAccessCode={validAccessCode} kidList={kidList} setKidList={setKidList}/>}/>
-                <Route path='/goals/new' element={<AddGoal kidList={kidList} setKidList={setKidList}/>}/>
+                <Route path='/kids/:kidId/goals/new' element={<AddGoal kidList={kidList} setKidList={setKidList}/>}/>
                 <Route path='/goals/:id/edit' element={<EditGoal kidList={kidList} setKidList={setKidList}/>}/>
                 <Route path='/kids/:id' element={<KidDetails/>}/>
                 <Route path='/goals/:id' element={<GoalDetails/>}/>
