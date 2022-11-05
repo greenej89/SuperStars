@@ -81,7 +81,7 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
         </select>
       </div>
       { loaded &&
-        <div className="col-sm-5 border rounded bg-warning p-3">
+        <div className="border rounded bg-warning p-3">
               <h3>Edit {kid.name}'s Information</h3> 
               <KidForm 
                 initialName = {kid.name}

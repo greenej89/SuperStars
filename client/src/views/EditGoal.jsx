@@ -50,7 +50,7 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
         <h1 className="text-white">Edit Goal</h1>
         <div className="edit-goal-form d-flex flex-column align-items-center">
           {loaded &&  
-            <div className="col-sm-5 border rounded bg-warning p-3">
+            <>
               <GoalForm 
                 kidList={kidList}
                 setKidList={setKidList}
@@ -83,7 +83,7 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
               <button type="submit" className="btn btn-success btn-lg">Update</button>
             </div> */}
             </form>
-          </div>
+          </>
           }
         </div>
     </>

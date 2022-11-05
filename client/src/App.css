@@ -64,7 +64,7 @@
 }
 
 /* Kid Menu CSS */
-.kid-menu{
+.kid-menu {
   height: 80%;
   overflow: auto;
 }
@@ -112,14 +112,13 @@
   bottom: 0;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 925px) {
   .main{
     height:100%;
     background: black url('./static/main_background.jpg') repeat-y;
   }
   
   .sidebar {
-    padding-left: 50px;
     width: 100%;
     height: auto;
     position: relative;

@@ -30,7 +30,7 @@ const AddGoal = ({kidList, setKidList}) => {
     <>
       <h1 className="text-white">Add Goal</h1>
       <div className="create-goal-form d-flex flex-column align-items-center">
-        <div className="col-sm-5 border rounded bg-warning p-3">
+        <>
           <GoalForm 
             kidList={kidList}
             setKidList={setKidList}
@@ -45,7 +45,7 @@ const AddGoal = ({kidList, setKidList}) => {
             formType = 'create'
             errors = {errors}
           />
-        </div>
+        </>
       </div>
     </>
   )

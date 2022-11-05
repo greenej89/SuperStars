@@ -24,11 +24,8 @@ const Dashboard = ({kidList, setKidList}) => {
   
   return (
     <div className="create-kid-form d-flex flex-column align-items-center">
-      {/* <div className='mb-1 align-items-center justify-content-start' >
-        <AddGoalButton/>
-      </div> */}
-      <div className="col-sm-5 border rounded bg-warning p-3">
-        <h2>Add Kid</h2>
+      <div className="border rounded bg-warning p-3">
+      <h2>Add Kid</h2>
         <KidForm 
           initialName = ''
           initialImageURL = {undefined} //'https://cdn-icons-png.flaticon.com/512/206/206880.png'

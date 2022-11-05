@@ -14,13 +14,13 @@ const KidForm = ({initialName, initialImageURL, kidFormHandler, errors}) => {
     <>
       <form onSubmit={onSubmitHandler}>
           <div className='mb-1 d-flex align-items-center justify-content-center' >
-            <label className='col-sm-4 col-form-label-lg text-start' htmlFor='name'> Name:</label>
+            <label className='col-5 col-form-label-lg text-start' htmlFor='name'> Name:</label>
             <input className='form-control' type='text' id='name' onChange = {e => setName(e.target.value)} value={name}/>
           </div>
           <p className='text-danger'>{ errors.name && errors.name.message }</p>
 
           <div className='mb-1 d-flex align-items-center justify-content-center'>
-            <label className='col-sm-4 col-form-label-lg text-start' htmlFor='imageURL'>Photo Link (optional):</label>
+            <label className='col-5 col-form-label-lg text-start' htmlFor='imageURL'>Photo Link (optional):</label>
             <input className='form-control' type='text' id='imageURL' onChange = {e => setImageURL(e.target.value)} value={imageURL}/>
           </div>
 
