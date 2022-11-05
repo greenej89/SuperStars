@@ -1,9 +1,11 @@
 import {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import GoalForm from '../components/GoalForm'
 
 const AddGoal = ({kidList, setKidList}) => {
+
+  const {kidId} = useParams()
 
   const navigate = useNavigate()
 
@@ -19,6 +21,7 @@ const AddGoal = ({kidList, setKidList}) => {
         navigate(`/kids/${res.data._id}`)
       })
       .catch( err => {
+        console.log(err.response.data.errors)
         setErrors(err.response.data.errors)
       })
 }
@@ -27,19 +30,22 @@ const AddGoal = ({kidList, setKidList}) => {
     <>
       <h1 className="text-white">Add Goal</h1>
       <div className="create-goal-form d-flex flex-column align-items-center">
+        <div className="col-sm-5 border rounded bg-warning p-3">
           <GoalForm 
             kidList={kidList}
             setKidList={setKidList}
-            initialKidId = ''
+            initialKidId = {kidId}
             initialSummary = ''
             initialPledge = ''
             initialReward = ''
             initialRewardURL = ''
             initialTotalStars = {0}
-            intialAwardedStars = {0}
+            initialAwardedStars = {0}
             goalFormHandler = {createGoal}
+            formType = 'create'
             errors = {errors}
           />
+        </div>
       </div>
     </>
   )

@@ -41,7 +41,7 @@ const KidDetails = () => {
           </table>
         }
       </div>
-      <AddGoalButton/>
+      <AddGoalButton kidId={kid._id}/>
     </div>
   );
 };

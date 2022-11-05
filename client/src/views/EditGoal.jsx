@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import GoalForm from '../components/GoalForm'
-import { Navigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const EditGoal = ({kidList, setKidList, kidId}) => {
@@ -16,6 +16,8 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
 
   //Stores backend validation errors
   const [errors, setErrors] = useState({})
+
+  const navigate = useNavigate()
 
   //Retrive goal from database and store properties in state
   //The indicate that object that loaded to prepopulate form fields
@@ -35,7 +37,7 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
         console.log('Updated goal', res.data)
         setGoal(res.data)
         setErrors({})
-        Navigate('/goals/' + id)
+        navigate('/goals/' + id)
       })
       .catch( err => {
         setErrors(err.response.data.errors)
@@ -44,41 +46,44 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
 
   return (
     <>
+    <p>{goal.awardedStars}</p>
         <h1 className="text-white">Edit Goal</h1>
         <div className="edit-goal-form d-flex flex-column align-items-center">
           {loaded &&  
-            <GoalForm 
-              kidList={kidList}
-              setKidList={setKidList}
-              initialKidId = {goal.kidId}
-              initialSummary = {goal.summary}
-              initialPledge = {goal.pledge}
-              initialReward = {goal.reward}
-              initialRewardURL = {goal.rewardURL}
-              initialTotalStars = {goal.totalStars}
-              intialAwardedStars = {goal.awardedStars}
-              goalFormHandler = {updateGoal}
-              errors = {errors}
-            />
-          } 
-          {loaded &&
+            <div className="col-sm-5 border rounded bg-warning p-3">
+              <GoalForm 
+                kidList={kidList}
+                setKidList={setKidList}
+                initialKidId = {goal.kidId}
+                initialSummary = {goal.summary}
+                initialPledge = {goal.pledge}
+                initialReward = {goal.reward}
+                initialRewardURL = {goal.rewardURL}
+                initialTotalStars = {goal.totalStars}
+                initialAwardedStars = {goal.awardedStars}
+                goalFormHandler = {updateGoal}
+                formType = 'edit'
+                errors = {errors}
+              />
             <form onSubmit={e => updateGoal(goal)}>
-              <div className='mb-1 d-flex align-items-center justify-content-center'>
-                <label className='col-sm-4 col-form-label-lg text-start' htmlFor='awardedStars'>
-                  Awarded Stars:
-                </label>
-                <input className='form-control' type='number' id='awardedStars' 
-                  min = '0'
-                  max = {`${goal.totalStars}`}
-                  onChange = { e => {
-                    const updatedGoal = {...goal}
-                    updatedGoal.awardedStars = e.target.value
-                    setGoal(updatedGoal)
-                  }} 
-                  value={goal.awardedStars}/>
-                <button type="submit" className="btn btn-success btn-lg">Update</button>
-              </div>
-          </form>
+            {/* <div className='mb-1 d-flex align-items-center justify-content-center'>
+              <label className='col-sm-4 col-form-label-lg text-start' htmlFor='awardedStars'>
+              Awarded Stars:
+              </label>
+              <input className='form-control' type='number' id='awardedStars' 
+                min = '0'
+                max = {`${goal.totalStars}`}
+                onChange = { e => {
+                  const updatedGoal = {...goal}
+                  updatedGoal.awardedStars = e.target.value
+                  setGoal(updatedGoal)
+                }} 
+                value={goal.awardedStars}
+              />
+              <button type="submit" className="btn btn-success btn-lg">Update</button>
+            </div> */}
+            </form>
+          </div>
           }
         </div>
     </>

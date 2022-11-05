@@ -24,9 +24,9 @@ const Dashboard = ({kidList, setKidList}) => {
   
   return (
     <div className="create-kid-form d-flex flex-column align-items-center">
-      <div className='mb-1 align-items-center justify-content-start' >
+      {/* <div className='mb-1 align-items-center justify-content-start' >
         <AddGoalButton/>
-      </div>
+      </div> */}
       <div className="col-sm-5 border rounded bg-warning p-3">
         <h2>Add Kid</h2>
         <KidForm 

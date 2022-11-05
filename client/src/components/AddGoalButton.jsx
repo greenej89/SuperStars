@@ -1,10 +1,10 @@
 import React from 'react'
 import { redirect, useNavigate } from 'react-router-dom'
 
-const AddGoalButton = () => {
+const AddGoalButton = ({kidId}) => {
   const navigate = useNavigate()
   const routeChange = e => {
-    navigate('/goals/new')
+    navigate(`/kids/${kidId}/goals/new`)
   }
   return (
     <>
