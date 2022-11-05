@@ -12,11 +12,10 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
   const navigate = useNavigate()
 
   useEffect(() => {
-    if(accessCode !==validAccessCode){
-      navigate('/dashboard')
+    if(accessCode !== validAccessCode){
       //Secure the route from backward/forward page navigation
       setAccessCode('')
-      console.log("Access key was reset to:" + accessCode)
+      navigate('/dashboard')
     }}, [])
 
   useEffect(() => {

@@ -27,7 +27,7 @@ const KidDetails = () => {
                   kid.goals.map((goal)=>(
                     <tr key={goal._id}>
                       <td>                          
-                        <Link to={`/goals/${goal._id}`}>
+                        <Link to={`/kids/${kid._id}/goals/${goal._id}`}>
                           {goal.summary}
                         </Link>
                       </td>

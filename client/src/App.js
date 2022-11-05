@@ -35,17 +35,36 @@ function App() {
           <div className='main'>
             <div className='container mt-5'>
             <Routes>
-                <Route path='/dashboard' element={<Dashboard kidList={kidList} setKidList={setKidList}/>}/>
-                <Route path='/kids' element={<ControlCenter accessCode={accessCode} setAccessCode={setAccessCode} validAccessCode={validAccessCode} kidList={kidList} setKidList={setKidList}/>}/>
-                <Route path='/kids/:kidId/goals/new' element={<AddGoal kidList={kidList} setKidList={setKidList}/>}/>
-                <Route path='/goals/:id/edit' element={<EditGoal kidList={kidList} setKidList={setKidList}/>}/>
+                <Route path='/dashboard' element={<Dashboard 
+                  kidList={kidList} 
+                  setKidList={setKidList}
+                  />}/>
+                <Route path='/kids' element={<ControlCenter 
+                  accessCode={accessCode} 
+                  setAccessCode={setAccessCode} 
+                  validAccessCode={validAccessCode} 
+                  kidList={kidList} 
+                  setKidList={setKidList}
+                />}/>
+                <Route path='/kids/:kidId/goals/new' element={<AddGoal 
+                  kidList={kidList} 
+                  setKidList={setKidList}
+                />}/>
+                <Route path='/goals/:id/edit' element={<EditGoal 
+                  kidList={kidList} 
+                  setKidList={setKidList}
+                />}/>
                 <Route path='/kids/:id' element={<KidDetails/>}/>
-                <Route path='/goals/:id' element={<GoalDetails/>}/>
+                <Route path='/kids/:kidId/goals/:goalId' element={<GoalDetails/>}/>
             </Routes>
             </div>
           </div>
           <div className='footer'>
-            <Footer accessCode={accessCode} setAccessCode={setAccessCode} validAccessCode={validAccessCode}/>
+            <Footer 
+              accessCode={accessCode} 
+              setAccessCode={setAccessCode} 
+              validAccessCode={validAccessCode}
+            />
           </div>
       </BrowserRouter>
     </div>

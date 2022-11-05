@@ -28,7 +28,7 @@ const EditGoal = ({kidList, setKidList, kidId}) => {
         setLoaded(true) //Indicate that goal is loaded
       })
       .catch( err => console.log(err) )
-  }, [])
+  }, [id])
 
   //Updates pet in db using the petParam object argument
   const updateGoal = goalParam => {

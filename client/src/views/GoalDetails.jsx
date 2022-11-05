@@ -4,15 +4,15 @@ import axios from 'axios'
 
 const GoalDetails = () => {
   const [goal, setGoal] = useState({})
-  const{id} = useParams()
+  const{goalId} = useParams()
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/goals/' + id)
+    axios.get('http://localhost:8000/api/goals/' + goalId)
       .then( res => {
         setGoal(res.data)
       })
       .catch( err => console.log(err))
-  }, [id, goal])
+  }, [goalId, goal])
 
   const starArray = []
   for(let i=0;i<goal.awardedStars;i++){
@@ -33,7 +33,7 @@ const GoalDetails = () => {
   }
 
   const updateGoal = goalParam => {
-    axios.put('http://localhost:8000/api/goals/' + id, goalParam)
+    axios.put('http://localhost:8000/api/goals/' + goalId, goalParam)
       .then( res => {
         console.log('Update was succesful', res.data)
       })

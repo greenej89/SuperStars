@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import AddGoalButton from '../components/AddGoalButton'
 import KidForm from '../components/KidForm'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -7,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 const Dashboard = ({kidList, setKidList}) => {
 
   const navigate = useNavigate()
-
   const [errors, setErrors] = useState({})
 
   const createKid = kidParam => {

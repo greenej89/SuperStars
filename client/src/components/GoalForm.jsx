@@ -1,16 +1,25 @@
 import { useState } from 'react'
 
 const GoalForm = (
-  {kidList, setKidList, initialKidId, initialSummary, initialPledge,
-    initialReward, initialRewardURL, initialTotalStars, initialAwardedStars,
-    goalFormHandler, formType, errors}) => {
-  const [kidId, setKidId] = useState(initialKidId)
+  { initialKidId, 
+    initialSummary, 
+    initialPledge, 
+    initialTotalStars, 
+    initialAwardedStars,
+    initialReward, 
+    initialRewardURL, 
+    goalFormHandler, 
+    formType, 
+    errors
+  }) => {
+
+  const [kidId] = useState(initialKidId)
   const [summary, setSummary] = useState(initialSummary)
   const [pledge, setPledge] = useState(initialPledge)
-  const [reward, setReward] = useState(initialReward)
-  const [rewardURL, setRewardURL] = useState(initialRewardURL)
   const [totalStars, setTotalStars] = useState(initialTotalStars)
   const [awardedStars, setAwardedStars] = useState(initialAwardedStars)
+  const [reward, setReward] = useState(initialReward)
+  const [rewardURL, setRewardURL] = useState(initialRewardURL)
 
   const onSubmitHandler = e => {
     e.preventDefault()
