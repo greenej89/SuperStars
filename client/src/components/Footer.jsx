@@ -1,11 +1,9 @@
 import {useState} from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Footer = ({accessCode, setAccessCode, validAccessCode}) => {
 
-  const navigate = useNavigate()
   const [inputAccessCode, setInputAccessCode] = useState('')
-  const [displayError, setDisplayError] = useState(false)
 
   const requestAccessCode = e => {
     alert(`The access code is:  ${validAccessCode}`)
@@ -26,7 +24,7 @@ const Footer = ({accessCode, setAccessCode, validAccessCode}) => {
   }
 
   return (
-    <div className="bg-dark text-white w-100 d-flex align-items-cente p-2">
+    <div className="bg-dark text-white w-100 d-flex align-items-center p-2">
         {
           accessCode === validAccessCode ?
           <div className='d-flex justify-content-between w-100'>
