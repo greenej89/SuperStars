@@ -81,6 +81,7 @@ const ControlCenter = ({accessCode,setAccessCode,validAccessCode, kidList, setKi
       </div>
       { (loaded && accessCode === validAccessCode) &&
         <div className="border rounded bg-warning p-3">
+              <img className="kid-photo img-fluid mb-2" src={`${kid.imageURL}`} alt={`${kid.name}`}/>
               <h3>Edit {kid.name}'s Information</h3> 
               <KidForm 
                 initialName = {kid.name}
