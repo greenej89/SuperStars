@@ -1,4 +1,5 @@
-const {Kid, Goal} = require('../models/app.model')
+const {Goal} = require('../models/goal.model')
+const {Kid} = require('../models/kid.model')
 
 
 module.exports.findAllGoals = (req, res) => {

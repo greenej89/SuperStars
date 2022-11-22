@@ -1,4 +1,4 @@
-const {Kid} = require('../models/app.model')
+const {Kid} = require('../models/kid.model')
 
 module.exports.findAllKids = (req, res) => {
     Kid.find()
