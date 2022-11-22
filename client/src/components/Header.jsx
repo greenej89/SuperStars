@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
-    <div className="App-header d-flex justify-content-between align-items-center">
+    <div className="App-header d-flex justify-content-between align-items-center px-5">
         <div className="d-flex">
             <div className="App-logo me-3 ms-3" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-star-fill" viewBox="0 0 16 16">

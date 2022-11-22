@@ -27,7 +27,7 @@ const Footer = ({accessCode, setAccessCode, validAccessCode}) => {
     <div className="bg-dark text-white w-100 d-flex align-items-center p-2">
         {
           accessCode === validAccessCode ?
-          <div className='d-flex justify-content-between w-100'>
+          <div className='d-flex justify-content-between w-100 m-3'>
             <button className='btn btn-info ms-3'>
               <Link className='text-black text-decoration-none' to={'/kids'}>Control Center</Link>
             </button>

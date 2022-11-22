@@ -127,6 +127,7 @@
   }
   .kid-menu{
     height: 65%;
+    padding: 0px 0px 0px 60px;
     overflow-x:auto;
     overflow-y:hidden;
   }
