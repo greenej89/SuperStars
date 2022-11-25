@@ -32,7 +32,7 @@ function App() {
       <BrowserRouter>
         <Header/>
         <KidMenu kidList={kidList} setKidList={setKidList}/>
-            <div className='main container mt-5'>
+            <div className='main mt-5'>
             <Routes>
                 <Route path='/dashboard' element={<Dashboard 
                   accessCode={accessCode}
