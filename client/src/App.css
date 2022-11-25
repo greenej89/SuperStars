@@ -100,10 +100,11 @@
 .goal-details {
   margin-left: 150px;
   padding: 30px;
+  text-shadow: 2px 2px 2px #2b6c9a, -2px -2px 2px #2b6c9a;
 }
 .star-display {
   width: 500px;
-  background-color: #2b6c9a;
+  
 }
 
 .footer {
@@ -114,8 +115,8 @@
 
 @media screen and (max-width: 925px) {
   .main{
-    height:100%;
-    background: black url('./static/main_background.jpg') repeat-y;
+    height: 100%;
+    background: black url('./static/main_background.jpg');
   }
   
   .sidebar {
@@ -127,7 +128,7 @@
   }
   .kid-menu{
     height: 65%;
-    padding: 0px 0px 0px 60px;
+    padding: 0px auto;
     overflow-x:auto;
     overflow-y:hidden;
   }
