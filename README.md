@@ -6,7 +6,9 @@ This application was a solo project that I completed during my coding bootcamp. 
 
 ## How to Use Super Stars
 After pulling the git repo, navigate to the client directory and run:
+
 npm install
+
 npm start
 
 In a second terminal, navigate to the server directory and run:
